@@ -24,20 +24,21 @@ func partition(list []int, left int, right int) int {
 	return left
 }
 
-func sort(list []int, low int, high int) []int {
-	if low < high {
-		pi := partition(list, low, high)
+func sort(list []int, left int, right int) []int {
+	if left < right {
+		pi := partition(list, left, right)
 
 		// Sort left
-		list = sort(list, low, pi-1)
+		list = sort(list, left, pi-1)
 
 		// Sort right
-		list = sort(list, pi+1, high)
+		list = sort(list, pi+1, right)
 	}
 
 	return list
 }
 
+// One function way
 func quicksort(list []int) []int {
 	if len(list) < 2 {
 		return list
